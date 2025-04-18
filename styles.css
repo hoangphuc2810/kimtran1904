@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top right, #ffecd2, #fcb69f);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .container {
+    padding-top: 100px;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+  
+  #birthday-message {
+    font-size: 1.5em;
+    margin-top: 10px;
+  }
+  
+  .balloons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+  }
+  
+  .balloon {
+    width: 60px;
+    height: 80px;
+    border-radius: 60% 60% 60% 60%;
+    opacity: 0.8;
+    animation: float 6s infinite ease-in-out;
+  }
+  
+  .red { background-color: red; }
+  .blue { background-color: blue; }
+  .green { background-color: green; }
+  .yellow { background-color: yellow; }
+  
+  @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); }
+  }

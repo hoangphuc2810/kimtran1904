@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thiệp Sinh Nhật 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #d0f0ff, #a0e1ff);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card-container {
+      perspective: 1200px;
+    }
+
+    .card {
+      width: 320px;
+      height: 420px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1s;
+      cursor: pointer;
+    }
+
+    .card.is-open {
+      transform: rotateY(180deg);
+    }
+
+    .card .front, .card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      backface-visibility: hidden;
+    }
+
+    .front {
+      background: #fff1f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .front img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .front h2 {
+      margin-top: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      color: #e91e63;
+    }
+
+    .back {
+      background: #ffe8f0;
+      transform: rotateY(180deg);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .back h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #d63384;
+    }
+
+    .back p {
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    .confetti, .balloon {
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .confetti {
+      width: 10px;
+      height: 10px;
+      background-color: gold;
+      animation: fall 4s linear infinite;
+    }
+
+    .balloon {
+      width: 40px;
+      height: 60px;
+      border-radius: 60% 60% 60% 60%;
+      opacity: 0.7;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+      .card {
+        width: 90vw;
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="card" onclick="openCard(this)">
+    <div class="front">
+      <img src="./465595477_2139377386464405_885525317747627501_n.jpg" alt="Avatar" />
+      <h2>HPPD Kim Trân</h2>
+      <p>Nhấn để mở thiệp 🎁</p>
+    </div>
+    <div class="back">
+      <h1>Happy birthday Kim Trân Stock! 🎉</h1>
+      <p>
+        Hôm nay là 19/4! <br>
+        Chúc em có 1 ngày sinh nhật thật vui vẻ và hạnh phúc.
+        Tuổi mới xinh đẹp hơn và thành công hơn nheeeee!!! 💖🎂
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Nhạc nền -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f97f3d9e67.mp3?filename=happy-birthday-to-you-piano-version-9942.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Hiệu ứng JS -->
+<script>
+  function openCard(card) {
+    card.classList.toggle('is-open');
+  }
+
+  // Confetti
+  function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = ['#ff4081', '#ffd700', '#00bfff'][Math.floor(Math.random() * 3)];
+    confetti.style.animationDuration = 3 + Math.random() * 2 + 's';
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+  }
+  setInterval(createConfetti, 150);
+
+  // Bóng bay
+  function createBalloon() {
+    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'pink'];
+    const balloon = document.createElement('div');
+    balloon.classList.add('balloon');
+    balloon.style.left = Math.random() * 100 + 'vw';
+    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    balloon.style.animationDuration = 5 + Math.random() * 5 + 's';
+    document.body.appendChild(balloon);
+    setTimeout(() => balloon.remove(), 8000);
+  }
+  setInterval(createBalloon, 700);
+</script>
+
+</body>
+</html> 
